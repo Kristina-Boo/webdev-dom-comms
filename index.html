@@ -3,12 +3,12 @@
   <head>
     <title>Проект "Комменты"</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
     <div class="container">
-      <ul class="comments">
+      <ul class="comments" id="list">
         <li class="comment">
           <div class="comment-header">
             <div>Глеб Фокин</div>
@@ -47,25 +47,69 @@
       <div class="add-form">
         <input
           type="text"
-          class="add-form-name"
+          class="add-form-name" id="addFormName"
           placeholder="Введите ваше имя"
         />
         <textarea
           type="textarea"
-          class="add-form-text"
+          class="add-form-text" id="addFormText"
           placeholder="Введите ваш коментарий"
           rows="4"
         ></textarea>
         <div class="add-form-row">
-          <button class="add-form-button">Написать</button>
+          <button class="add-form-button" id="write">Написать</button>
         </div>
       </div>
     </div>
   </body>
 
   <script>
-    "use strict";
-    // Код писать здесь
-    console.log("It works!");
+    /* мой код */
+
+    // Создаём переменную для хранения текущей даты и времени
+    const currentDateAndTime = new Date();
+
+    // Получаем отдельные части даты и времени
+    const day = currentDateAndTime.getDate().toString().padStart(2, '0');
+    const month = (currentDateAndTime.getMonth() + 1).toString().padStart(2, '0'); // Месяцы в JS от 0 до 11
+    const year = currentDateAndTime.getFullYear();
+    const hours = currentDateAndTime.getHours().toString().padStart(2, '0');
+    const minutes = currentDateAndTime.getMinutes().toString().padStart(2, '0');
+
+    // Формируем строку с датой и временем в нужном формате
+    const formattedDate = `${day}.${month}.${year}`;
+    const formattedTime = `${hours}:${minutes}`;
+
+    // Выводим дату и время в консоль
+    console.log(`${formattedDate} ${formattedTime}`);
+
+
+    /* переменные для работы с полями ввода */
+  
+    
+    const list = document.getElementById("list"); /* переменная для списка */
+    const inputName = document.getElementById("addFormName");  /* переменная для ввода имени */
+    const textElement = document.getElementById("addFormText"); /* переменна дл комментария*/
+    const likesCounter = document.querySelector('.likes-counter'); /* переменная для счетчика лайков */
+    const likeButton = document.querySelector('.like-button'); 
+    const button = document.getElementById("write"); 
+
+    button.addEventListener("click", () => {
+      if (inputName.value === '') {
+        inputName.style = 'background: rgb(255,0,0)';
+         return;
+       }
+       if (textElement.value === '') {
+         textElement.style = 'background: rgb(255,0,0)';
+         return;
+       }
+      const oldHtml = list.innerHTML;
+      list.innerHTML = oldHtml + `<li class="comment"><div class="comment-header"><div>${inputName.value}</div><div>${formattedDate} ${formattedTime}</div></div><div class="comment-body"><div class="comment-text">${textElement.value}</div></div><div class="comment-footer"><div class="likes"><span class="likes-counter">0</span><button class="like-button -active-like"></button></div></div></li>`;
+      inputName.value = '';
+      textElement.value = '';
+      inputName.style = 'background: rgb(255,255,255)';
+      textElement.style = 'background: rgb(255,255,255)'
+    });
+    
   </script>
 </html>
