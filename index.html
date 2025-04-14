@@ -9,7 +9,7 @@
   <body>
     <div class="container">
       <ul class="comments" id="list">
-        <li class="comment">
+        <li class="comment" id="comments">
           <div class="comment-header">
             <div>Глеб Фокин</div>
             <div id="date">12.02.22 12:18</div>
@@ -57,7 +57,7 @@
           rows="4"
         ></textarea>
         <div class="add-form-row">
-          <button class="add-form-button" id="write">Написать</button>
+          <button class="add-form-button" id="addCommentButton">Написать</button>
           <div id="date"></div>
         </div>
       </div>
@@ -66,56 +66,25 @@
 
   <script>
    "use strict" 
-    /* мой код */
-
-    // Создаём переменную для хранения текущей даты и времени
-    const currentDateAndTime = new Date();
-
-    // Получаем отдельные части даты и времени
-    const date = document.getElementById("date")
-    const day = currentDateAndTime.getDate().toString().padStart(2, '0');
-    const month = (currentDateAndTime.getMonth() + 1).toString().padStart(2, '0'); // Месяцы в JS от 0 до 11
-    const year = currentDateAndTime.getFullYear();
-    const hours = currentDateAndTime.getHours().toString().padStart(2, '0');
-    const minutes = currentDateAndTime.getMinutes().toString().padStart(2, '0');
-
-    // Формируем строку с датой и временем в нужном формате
-    const formattedDate = `${day}.${month}.${year}`;
-    const formattedTime = `${hours}:${minutes}`;
-
-    // Выводим дату и время в консоль
-    console.log(`${formattedDate} ${formattedTime}`);
-
-
-    /* переменные для работы с полями ввода */
-  
-    
-    const list = document.getElementById("list"); /* переменная для списка */
-    const inputName = document.getElementById("addFormName");  /* переменная для ввода имени */
-    const textElement = document.getElementById("addFormText"); /* переменна дл комментария*/
-    const likesCounter = document.querySelector('.likes-counter'); /* переменная для счетчика лайков */
-    const likeButton = document.querySelector('.like-button'); 
-    const button = document.getElementById("write");
-    const timeStamp = `${formattedDate} ${formattedTime}` 
-
-    button.addEventListener("click", () => {
-      date.innerHtml = `${timeStamp}`;
-
-      if (inputName.value === '') {
-        inputName.style = 'background: rgb(255,0,0)';
-         return;
-       }
-       if (textElement.value === '') {
-         textElement.style = 'background: rgb(255,0,0)';
-         return;
-       }
-
-      const oldHtml = list.innerHTML;
-      list.innerHTML = oldHtml + `<li class="comment">
+   document.getElementById('addCommentButton').addEventListener('click', function() {
+            const currentDate = new Date();
+            const day = currentDate.getDate().toString().padStart(2, '0');
+            const month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Месяцы в JS от 0 до 11
+            const year = currentDate.getFullYear();
+            const hours = currentDate.getHours().toString().padStart(2, '0');
+            const minutes = currentDate.getMinutes().toString().padStart(2, '0');
+            const list = document.getElementById("list"); /* переменная для списка */
+            const inputName = document.getElementById("addFormName");  /* переменная для ввода имени */
+            const textElement = document.getElementById("addFormText"); /* переменна дл комментария*/
+            const likesCounter = document.querySelector('.likes-counter'); /* переменная для счетчика лайков */
+            const likeButton = document.querySelector('.like-button');
+            const formattedDate = `${day}.${month}.${year} ${hours}:${minutes}`;
+            const oldHtml = list.innerHTML;
+            list.innerHTML = oldHtml + `<li class="comment">
                                     <div class="comment-header">
                                      <div>${inputName.value}
                                      </div>
-                                     <div>${timeStamp}
+                                     <div>${formattedDate}
                                      </div>
                                     </div>
                                     <div class="comment-body">
@@ -135,7 +104,13 @@
       inputName.style = 'background: rgb(255,255,255)';
       textElement.style = 'background: rgb(255,255,255)'
 
-    });
-    
+
+            const comment = `$list.innerHTML ${formattedDate}`;
+
+            const commentsDiv = document.getElementById('comments');
+            const newComment = document.createElement('p');
+            newComment.textContent = comment;
+            commentsDiv.appendChild(newComment);
+        });
   </script>
 </html>
