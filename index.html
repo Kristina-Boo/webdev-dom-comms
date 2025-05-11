@@ -40,16 +40,15 @@
       date: new Date(),
       text: "Это будет первый комментарий на этой странице",
       likes: 3,
-      isLiked: true,
+      isLiked: true
     },
-
     {
       name: "Варвара Н.",
       date: new Date(),
       text: "Мне нравится как оформлена эта страница! ❤",
       likes: 75,
-      isLiked: false,
-    }
+      isLiked: false
+    },
    ];
 
    const renderComments = () => {
@@ -69,13 +68,14 @@
                <span class="likes-counter">${comment.likes}</span>
                <button 
                data-index="${index}" 
-               class="like-button ${comment.isLiked ? "-active-like" : ""
-               }"></button>
+               class="like-button ${comment.isLiked ? "-active-like" : ""}">
+               </button>
              </div>
            </div>
-         </li>`;
-         }); 
-        // .join("");
+         </li>
+         `;
+         }) 
+        .join("");
       const likeButtons = document.querySelectorAll(".like-button");
       for (const likeButton of likeButtons) {
         likeButton.addEventListener("click", () => {
@@ -99,12 +99,18 @@
     const text = document.getElementById("text-input");
 
     addButton.addEventListener("click", () => {
+
+      if (!name.value || !text.value) {
+        name.style = 'background: red';
+        text.style = 'background: red';
+        return;
+      };
       const newComment = {
         name: name.value,
         date: new Date(),
         text: text.value,
         likes: 0,
-        isLiked: false,
+        isLiked: false
       };
       comments.push(newComment);
 
