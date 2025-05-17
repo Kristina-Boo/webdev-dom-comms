@@ -128,15 +128,15 @@
 
     addButton.addEventListener("click", () => {
 
-      if (!name.value || !text.value) {
+      if (!name.value.trimStart().trimEnd() || !text.value.trimStart().trimEnd()) {
         name.style = 'background: red';
         text.style = 'background: red';
         return;
       };
       const newComment = {
-        name: sanitizeHtml(name.value),
-        date: new Date(),
-        text: sanitizeHtml(text.value),
+        name: sanitizeHtml(name.value.trimStart().trimEnd()),
+        date: `${formattedDate}`,
+        text: sanitizeHtml(text.value.trimStart().trimEnd()),
         likes: 0,
         isLiked: false,
       };
