@@ -7,8 +7,9 @@ import { sanitizeHTML } from "./modules/sanitizeHTML.js";
 export const initLikeListeners = (renderComments) => {
 
     const likeButtons = document.querySelectorAll(".like-button");
+
     for (const likeButton of likeButtons) {
-      likeButton.addEventListener("click", () => {
+      likeButton.addEventListener("click", (event) => {
          event.stopPropagation();
          const index = likeButton.dataset.index;
          const comment = comments[index];
@@ -27,11 +28,11 @@ export const initLikeListeners = (renderComments) => {
 export const initReplayListeners = () => {
     const text = document.getElementById("text-input");
     const commentElements = document.querySelectorAll(".comment");
-    for (const commentElement of commentElements) {
-      commentElement.addEventListener("click", () => {
-        const currentComment = comments[commentElement.dataset.index];
-        text.value = `${currentComment.name}:${currentComment.text}`;
-    });
+      for (const commentElement of commentElements) {
+        commentElement.addEventListener("click", () => {
+          const currentComment = comments[commentElement.dataset.index];
+          text.value = `${currentComment.name}:${currentComment.text}`;
+      });
     };
 }
 
@@ -54,9 +55,9 @@ export const initAddCommentListener = (renderComments) => {
         return;
       };
       const newComment = {
-        name: sanitizeHtml(name.value.trimStart().trimEnd()),
+        name: sanitizeHTML(name.value.trimStart().trimEnd()),
         date: `${formattedDate}`,
-        text: sanitizeHtml(text.value.trimStart().trimEnd()),
+        text: sanitizeHTML(text.value.trimStart().trimEnd()),
         likes: 0,
         isLiked: false,
       };

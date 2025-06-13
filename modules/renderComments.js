@@ -1,10 +1,10 @@
 import { comments } from "./comments.js";
-import { initLikeListeners, initReplayListeners } from "./modules/initListeners.js";
+import { initLikeListeners, initReplayListeners } from "./modules.initListeners.js";
 
-export    const renderComments = () => {
+export const renderComments = () => {
   
-      const list = document.querySelector(".comments");
-      list.innerHTML = comments.map((comment, index) => {
+  const list = document.querySelector(".comments");
+  list.innerHTML = comments.map((comment, index) => {
         return `
         <li class="comment" data-index="${index}">
            <div class="comment-header">
@@ -25,37 +25,11 @@ export    const renderComments = () => {
            </div>
          </li>
          `;
-         }) 
-        .join("");
-      const likeButtons = document.querySelectorAll(".like-button");
-      for (const likeButton of likeButtons) {
-        likeButton.addEventListener("click", () => {
-          event.stopPropagation();
-          const index = likeButton.dataset.index;
-          const comment = comments[index];
-
-          comment.likes = comment.isLiked 
-          ? comment.likes - 1
-          : comment.likes + 1;
-
-          comment.isLiked = !comment.isLiked;
-          renderComments();
-
-        });
-      }
-
-      const commentElements = document.querySelectorAll(".comment");
-      for (const commentElement of commentElements) {
-        commentElement.addEventListener("click", () => {
-          const currentComment = comments[commentElement.dataset.index];
-          text.value = `${currentComment.name}:${currentComment.text}`;
+     }) 
+    .join("");
 
 
-        });
-        
-      }
-      const comment = `$list.innerHTML ${formattedDate}`;
-
-            
-    };
-   
+  initLikeListeners(renderComments);
+  initReplayListeners();
+  const comment = `$list.innerHTML ${formattedDate}`;
+};
