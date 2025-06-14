@@ -5,7 +5,6 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-
   <body>
     <div class="container">
       <ul class="comments">
@@ -30,22 +29,23 @@
         </div>
       </div>
     </div>
+    <script type="module" src="./index.js"></script>
   </body>
 
-  <script>
+  <!-- <script>
    "use strict" 
    const name = document.getElementById("name-input");
    const text = document.getElementById("text-input");
 
    
-// создаю дату в нужном формате
+
    const currentDate = new Date();
    const day = currentDate.getDate().toString().padStart(2, '0');
    const month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Месяцы в JS от 0 до 11
    const year = currentDate.getFullYear();
    const hours = currentDate.getHours().toString().padStart(2, '0');
    const minutes = currentDate.getMinutes().toString().padStart(2, '0');
-   const formattedDate = `${day}.${month}.${year} ${hours}:${minutes}`; 
+   const formattedDate = `${day}.${month}.${year} ${hours}:${minutes}`;
 
    const sanitizeHtml = (value) => {
     return value.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
@@ -69,6 +69,7 @@
    ];
 
    const renderComments = () => {
+  
       const list = document.querySelector(".comments");
       list.innerHTML = comments.map((comment, index) => {
         return `
@@ -120,22 +121,25 @@
         });
         
       }
+      const comment = `$list.innerHTML ${formattedDate}`;
+
+            
     };
     renderComments();
 
     const addButton = document.querySelector(".add-form-button");
     
-// валидация коммента, чтобы неотправлялся пустым или при вводе пробелов (trim)
+
     addButton.addEventListener("click", () => {
       const currentDate = new Date();
-      const day = currentDate.getDate().toString().padStart(2, '0');
-      const month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Месяцы в JS от 0 до 11
-      const year = currentDate.getFullYear();
-      const hours = currentDate.getHours().toString().padStart(2, '0');
-      const minutes = currentDate.getMinutes().toString().padStart(2, '0');
-      const formattedDate = `${day}.${month}.${year} ${hours}:${minutes}`;
+     const day = currentDate.getDate().toString().padStart(2, '0');
+     const month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Месяцы в JS от 0 до 11
+     const year = currentDate.getFullYear();
+     const hours = currentDate.getHours().toString().padStart(2, '0');
+     const minutes = currentDate.getMinutes().toString().padStart(2, '0');
+     const formattedDate = `${day}.${month}.${year} ${hours}:${minutes}`;
 
-      if (!name.value.trimStart().trimEnd() || !text.value.trimStart().trimEnd()) { 
+      if (!name.value.trimStart().trimEnd() || !text.value.trimStart().trimEnd()) {
         name.style = 'background: red';
         text.style = 'background: red';
         return;
@@ -156,5 +160,5 @@
 
     });
   
-  </script>
+  </script> -->
 </html>
