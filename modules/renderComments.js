@@ -1,5 +1,7 @@
 import { comments } from "./comments.js";
-import { initLikeListeners, initReplayListeners } from "./modules.initListeners.js";
+import { initLikeListeners, initReplayListeners, initAddFormattedDate
+  
+ } from "./initListeners.js";
 
 export const renderComments = () => {
   
@@ -31,5 +33,5 @@ export const renderComments = () => {
 
   initLikeListeners(renderComments);
   initReplayListeners();
-  const comment = `$list.innerHTML ${formattedDate}`;
+  const comment = `$list.innerHTML ${initAddFormattedDate}`;
 };
