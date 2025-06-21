@@ -4,20 +4,23 @@ const currentDate = new Date();
      const year = currentDate.getFullYear();
      const hours = currentDate.getHours().toString().padStart(2, '0');
      const minutes = currentDate.getMinutes().toString().padStart(2, '0');
-     const formattedDate = `${day}.${month}.${year} ${hours}:${minutes}`;
+     export const formattedDate = `${day}.${month}.${year} ${hours}:${minutes}`;
 export let comments = [
-  {
-    name: "Глеб Фокин",
-    date: `${formattedDate}`,
-    text: "Это будет первый комментарий на этой странице",
-    likes: 3,
-    isLiked: true
-  },
-  {
-    name: "Варвара Н.",
-    date: `${formattedDate}`,
-    text: "Мне нравится как оформлена эта страница! ❤",
-    likes: 75,
-    isLiked: false
-  },
+  // {
+  //   name: "Глеб Фокин",
+  //   date: `${formattedDate}`,
+  //   text: "Это будет первый комментарий на этой странице",
+  //   likes: 3,
+  //   isLiked: true
+  // },
+  // {
+  //   name: "Варвара Н.",
+  //   date: `${formattedDate}`,
+  //   text: "Мне нравится как оформлена эта страница! ❤",
+  //   likes: 75,
+  //   isLiked: false
+  // },
 ];
+export const updateComments = newComments => {
+  comments = newComments
+}

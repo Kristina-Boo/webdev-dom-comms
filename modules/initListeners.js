@@ -1,5 +1,6 @@
 
-import { comments } from "./comments.js";
+import { postComment } from "./api.js";
+import { comments, updateComments } from "./comments.js";
 import { renderComments } from "./renderComments.js";
 import { sanitizeHTML } from "./sanitizeHTML.js";
 
@@ -54,19 +55,28 @@ export const initAddCommentListener = (renderComments) => {
         text.style = 'background: red';
         return;
       };
-      const newComment = {
-        name: sanitizeHTML(name.value.trimStart().trimEnd()),
-        date: `${formattedDate}`,
-        text: sanitizeHTML(text.value.trimStart().trimEnd()),
-        likes: 0,
-        isLiked: false,
-      };
-      comments.push(newComment);
+      // const newComment = {
+      //   name: sanitizeHTML(name.value.trimStart().trimEnd()),
+      //   date: `${formattedDate}`,
+      //   text: sanitizeHTML(text.value.trimStart().trimEnd()),
+      //   likes: 0,
+      //   isLiked: false,
+      // };
 
-      renderComments();
+      postComment(sanitizeHTML(text.value.trimStart().trimEnd()), sanitizeHTML(name.value.trimStart().trimEnd())).then(
+        (data) => {
+          updateComments(data)
+          renderComments()
+          name.value = "";
+          text.value = "";
 
-      name.value = "";
-      text.value = "";
+        }
+      )
+      // comments.push(newComment);
+
+      // renderComments();
+
+      
 
     });
 }

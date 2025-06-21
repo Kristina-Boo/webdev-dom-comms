@@ -1,7 +1,5 @@
 import { comments } from "./comments.js";
-import { initLikeListeners, initReplayListeners, initAddFormattedDate
-  
- } from "./initListeners.js";
+import { initLikeListeners, initReplayListeners, initAddFormattedDate } from "./initListeners.js";
 
 export const renderComments = () => {
   
