@@ -7,7 +7,7 @@ export const fetchComments = () => {
         const appComments = responseData.comments.map(comment => {
             return {
                 name: comment.author.name,
-                date: new Date(comment.date),
+                date: comment.date,
                 text: comment.text,
                 likes: comment.likes,
                 isliked: false,
