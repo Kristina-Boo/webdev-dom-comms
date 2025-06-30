@@ -48,9 +48,15 @@ export const initAddCommentListener = (renderComments) => {
         text.style = 'background: red';
         return;
       };
+
+      document.querySelector('.form-loading').style.display= 'block'
+      document.querySelector('.add-form').style.display= 'none'
  
       postComment(sanitizeHTML(text.value.trimStart().trimEnd()), sanitizeHTML(name.value.trimStart().trimEnd())).then(
         (data) => {
+          document.querySelector('.form-loading').style.display= 'none'
+          document.querySelector('.add-form').style.display= 'flex'
+
           updateComments(data)
           renderComments()
           name.value = "";
