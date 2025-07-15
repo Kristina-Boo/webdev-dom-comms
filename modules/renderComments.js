@@ -1,7 +1,5 @@
 import { comments } from "./comments.js";
-import { initLikeListeners, initReplayListeners, initAddFormattedDate
-  
- } from "./initListeners.js";
+import { initLikeListeners, initReplayListeners } from "./initListeners.js";
 
 export const renderComments = () => {
   
@@ -11,7 +9,7 @@ export const renderComments = () => {
         <li class="comment" data-index="${index}">
            <div class="comment-header">
               <div>${comment.name}</div>
-              <div id="date">${comment.date}</div>
+              <div id="date">${new Date(comment.date).toLocaleDateString()}</div>
            </div>
            <div class="comment-body">
               <div class="comment-text">${comment.text}</div>
@@ -33,5 +31,4 @@ export const renderComments = () => {
 
   initLikeListeners(renderComments);
   initReplayListeners();
-  const comment = `$list.innerHTML ${initAddFormattedDate}`;
 };
