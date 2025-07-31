@@ -7,7 +7,8 @@ document.querySelector('.comments').innerHTML =
 'Пожалуйста, подождите, загружаю комментарии...'
 
 
-fetchComments().then(data => {
+fetchComments()
+.then(data => {
     updateComments(data);
     renderComments()    
     

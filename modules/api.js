@@ -1,6 +1,7 @@
 const host = 'https://wedev-api.sky.pro/api/v1/:kristina-boo'
 export const fetchComments = () => {
     return fetch(host + '/comments')
+
     .then((res) => {
         return res.json()
     })
@@ -12,11 +13,31 @@ export const fetchComments = () => {
                 text: comment.text,
                 likes: comment.likes,
                 isliked: false,
+                forceError: true,
+
             }
+
         })
         return appComments
+
+        
     })
+    // .then((response) => {
+    //     if (response.status === 500) {
+    //         throw new Error('Ошибка сервера')
+    //     }
+    // })
+    // .then(() => {
+    //   return appComments  
+    // })
+    
+
+        
 }
+    
+
+
+
 
 export const postComment = (text, name) => {
     return fetch(host + '/comments', {
@@ -24,6 +45,7 @@ export const postComment = (text, name) => {
       body: JSON.stringify ({
         text,
         name,
+        forceError: true,
       }),
     })
     .then((response) => {

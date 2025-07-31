@@ -86,7 +86,7 @@ export const initAddCommentListener = (renderComments) => {
           setTimeout(() => {
             name.classList.remove('-error')
             text.classList.remove('-error')
-        }, 2000)
+          }, 2000)
 
           
         }
