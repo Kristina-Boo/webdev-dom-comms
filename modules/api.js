@@ -13,26 +13,22 @@ export const fetchComments = () => {
                 text: comment.text,
                 likes: comment.likes,
                 isliked: false,
-                forceError: true,
+                // forceError: true,
 
             }
 
-        })
-        return appComments
-
-        
     })
-    // .then((response) => {
-    //     if (response.status === 500) {
-    //         throw new Error('Ошибка сервера')
-    //     }
-    // })
-    // .then(() => {
-    //   return appComments  
-    // })
-    
+        .then((response) => {
+        if (response.status === 500) {
+            throw new Error('Ошибка сервера')
+        }
+    })
+    .then(() => {
+      return appComments  
+    })
+   })
 
-        
+       
 }
     
 
