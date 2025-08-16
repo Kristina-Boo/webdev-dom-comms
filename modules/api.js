@@ -4,6 +4,12 @@ export const fetchComments = () => {
 
     .then((res) => {
         return res.json()
+        .then((response) => {
+        if (response.status === 500) {
+            throw new Error('Ошибка сервера')
+        }
+    })
+    
     })
     .then((responseData) => {
         const appComments = responseData.comments.map((comment) => {
@@ -13,7 +19,7 @@ export const fetchComments = () => {
                 text: comment.text,
                 likes: comment.likes,
                 isliked: false,
-                forceError: true,
+                // forceError: true,
 
             }
 
@@ -45,7 +51,7 @@ export const postComment = (text, name) => {
       body: JSON.stringify ({
         text,
         name,
-        forceError: true,
+        // forceError: true,
       }),
     })
     .then((response) => {
