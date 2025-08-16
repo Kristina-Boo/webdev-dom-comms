@@ -46,6 +46,11 @@ export const initAddCommentListener = (renderComments) => {
       if (!name.value.trimStart().trimEnd() || !text.value.trimStart().trimEnd()) {
         name.style = 'background: red';
         text.style = 'background: red';
+
+        setTimeout(() => {
+            name.classList.remove('background: red')
+            text.classList.remove('background: red')
+          }, 2000)
         return;
       };
 
