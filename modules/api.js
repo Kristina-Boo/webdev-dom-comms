@@ -3,14 +3,18 @@ export const fetchComments = () => {
     return fetch(host + '/comments')
 
     .then((res) => {
-        return res.json()
-        .then((response) => {
-        if (response.status === 500) {
+        if (res.status === 500) {
             throw new Error('Ошибка сервера')
-        }
-    })
+            return res.json();
+    //     .then((response) => {
+    //     if (response.status === 500) {
+    //         throw new Error('Ошибка сервера')
+    //     }
+    // })
     
+    }
     })
+
     .then((responseData) => {
         const appComments = responseData.comments.map((comment) => {
             return {
@@ -19,7 +23,7 @@ export const fetchComments = () => {
                 text: comment.text,
                 likes: comment.likes,
                 isliked: false,
-                // forceError: true,
+                forceError: true,
 
             }
 
@@ -28,6 +32,10 @@ export const fetchComments = () => {
 
         
     })
+
+    .catch(error => 
+        alert('Ошибка сервера', error.message)
+    )
     // .then((response) => {
     //     if (response.status === 500) {
     //         throw new Error('Ошибка сервера')
@@ -51,7 +59,7 @@ export const postComment = (text, name) => {
       body: JSON.stringify ({
         text,
         name,
-        // forceError: true,
+        forceError: true,
       }),
     })
     .then((response) => {
