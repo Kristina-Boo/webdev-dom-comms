@@ -5,14 +5,9 @@ export const fetchComments = () => {
     .then((res) => {
         if (res.status === 500) {
             throw new Error('Ошибка сервера')
-            return res.json();
-    //     .then((response) => {
-    //     if (response.status === 500) {
-    //         throw new Error('Ошибка сервера')
-    //     }
-    // })
     
     }
+    return res.json()
     })
 
     .then((responseData) => {
