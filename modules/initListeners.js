@@ -76,15 +76,15 @@ export const initAddCommentListener = (renderComments) => {
         document.querySelector('.add-form').style.display = 'flex'
 
         if (error.message === 'Failed to fetch') {
-          alert('Нет интернета, попробуйте снова')
+          return alert('Нет интернета, попробуйте снова')
         }
 
         if (error.message === 'Ошибка сервера') {
-          alert('Ошибка сервера')
+          return alert('Ошибка сервера')
         }
 
         if (error.message === "Неверный запрос"){
-          alert('Имя и комментарий должны быть не короче трех символов')
+          return alert('Имя и комментарий должны быть не короче трех символов')
 
           name.classList.add('-error')
           text.classList.add('-error')
