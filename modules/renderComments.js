@@ -3,9 +3,10 @@ import { initLikeListeners, initReplayListeners } from "./initListeners.js";
 
 export const renderComments = () => {
   
-  const list = document.querySelector(".comments");
-  list.innerHTML = comments.map((comment, index) => {
-        return `
+  const container = document.querySelector(".container");
+  const commentsHtml = comments
+        .map((comment, index) => {
+            return `
         <li class="comment" data-index="${index}">
            <div class="comment-header">
               <div>${comment.name}</div>
@@ -28,7 +29,38 @@ export const renderComments = () => {
      }) 
     .join("");
 
-
+  const addCommentsHtml = `
+      <ul class="comments">
+      </ul>
+      <div class="add-form">
+        <input
+          type="text"
+          class="add-form-name"
+          placeholder="Введите ваше имя"
+          id="name-input"
+        />
+        <textarea
+          type="textarea"
+          class="add-form-text"
+          placeholder="Введите ваш коментарий"
+          rows="4"
+          id="text-input"
+        ></textarea>
+        <div class="add-form-row">
+          <button class="add-form-button">Написать</button>
+          <div id="date"></div>
+        </div>
+      </div>
+      <div class="form-loading" style="display: none; margin-top: 20px;">
+        коментарий добавляется...
+      </div>`
+  const linkToLoginText = `<p>чтобы отправить комментарий, <span class="link-login">войдите</span><p>`
+  const baseHtml = `
+  <ul class="comments">${commentsHtml}</ul> 
+  ${linkToLoginText}
+  `
+  // добавляю в контейнер разметку
+  container.innerHTML = baseHtml
   initLikeListeners(renderComments);
   initReplayListeners();
 };
