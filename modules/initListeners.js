@@ -84,8 +84,6 @@ export const initAddCommentListener = (renderComments) => {
         }
 
         if (error.message === "Неверный запрос"){
-          return alert('Имя и комментарий должны быть не короче трех символов')
-
           name.classList.add('-error')
           text.classList.add('-error')
 
@@ -93,6 +91,9 @@ export const initAddCommentListener = (renderComments) => {
             name.classList.remove('-error')
             text.classList.remove('-error')
           }, 2000)
+          return alert('Имя и комментарий должны быть не короче трех символов')
+
+          
 
           
         }
