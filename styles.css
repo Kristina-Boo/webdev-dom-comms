@@ -107,8 +107,9 @@ body {
   }
 
   .add-form-name {
-    width: 300px;
+    width: 540px;
     padding: 11px 22px;
+    margin-bottom: 12px;
   }
 
   .add-form-text {
@@ -150,7 +151,7 @@ body {
     margin-bottom: 12px;
   }
 
-  .add-form-name: read-only {
+  .add-form-name:read-only {
     background-color: #d2ddd2;
     color: #363636;
     font-weight: bold;

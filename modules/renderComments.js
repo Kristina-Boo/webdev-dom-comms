@@ -1,10 +1,11 @@
-import { comments } from "./comments.js";
-import { initLikeListeners, initReplayListeners } from "./initListeners.js";
+import { comments } from './comments.js'
+// import { initLikeListeners, initReplayListeners } from "./initListeners.js";
+// import { initAddCommentListener } from "./modules/initListeners.js";
+import { renderLogin } from './renderLogin.js'
 
 export const renderComments = () => {
-  
-  const container = document.querySelector(".container");
-  const commentsHtml = comments
+    const container = document.querySelector('.container')
+    const commentsHtml = comments
         .map((comment, index) => {
             return `
         <li class="comment" data-index="${index}">
@@ -20,18 +21,16 @@ export const renderComments = () => {
                <span class="likes-counter">${comment.likes}</span>
                <button 
                data-index="${index}" 
-               class="like-button ${comment.isLiked ? "-active-like" : ""}">
+               class="like-button ${comment.isLiked ? '-active-like' : ''}">
                </button>
              </div>
            </div>
          </li>
-         `;
-     }) 
-    .join("");
+         `
+        })
+        .join('')
 
-  const addCommentsHtml = `
-      <ul class="comments">
-      </ul>
+    const addCommentsHtml = `
       <div class="add-form">
         <input
           type="text"
@@ -42,7 +41,7 @@ export const renderComments = () => {
         <textarea
           type="textarea"
           class="add-form-text"
-          placeholder="Введите ваш коментарий"
+          placeholder="Введите ваш комментарий"
           rows="4"
           id="text-input"
         ></textarea>
@@ -52,15 +51,21 @@ export const renderComments = () => {
         </div>
       </div>
       <div class="form-loading" style="display: none; margin-top: 20px;">
-        коментарий добавляется...
+        комментарий добавляется...
       </div>`
-  const linkToLoginText = `<p>чтобы отправить комментарий, <span class="link-login">войдите</span><p>`
-  const baseHtml = `
-  <ul class="comments">${commentsHtml}</ul> 
-  ${linkToLoginText}
-  `
-  // добавляю в контейнер разметку
-  container.innerHTML = baseHtml
-  initLikeListeners(renderComments);
-  initReplayListeners();
-};
+    const linkToLoginText = `<p class="link">чтобы отправить комментарий, <span class="link-login"> войдите</span></p>`
+    const baseHtml = `
+       <ul class="comments">${commentsHtml}</ul> 
+       ${linkToLoginText}
+    `
+    // добавляю в контейнер разметку
+    container.innerHTML = baseHtml
+
+    // initLikeListeners(renderComments);
+    // initReplayListeners();
+    // initAddCommentListener(renderComments);
+
+    document.querySelector('.link-login').addEventListener('click', () => {
+        renderLogin()
+    })
+}
