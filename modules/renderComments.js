@@ -1,6 +1,7 @@
 import { comments } from './comments.js'
-// import { initLikeListeners, initReplayListeners } from "./initListeners.js";
-// import { initAddCommentListener } from "./modules/initListeners.js";
+import { token } from './api.js'
+import { initLikeListeners, initReplayListeners } from './initListeners.js'
+import { initAddCommentListener } from './initListeners.js'
 import { renderLogin } from './renderLogin.js'
 
 export const renderComments = () => {
@@ -53,19 +54,27 @@ export const renderComments = () => {
       <div class="form-loading" style="display: none; margin-top: 20px;">
         комментарий добавляется...
       </div>`
-    const linkToLoginText = `<p class="link">чтобы отправить комментарий, <span class="link-login"> войдите</span></p>`
+    const linkToLoginText = `<p>чтобы отправить комментарий, <span class="link-login">войдите</span></p>`
     const baseHtml = `
-       <ul class="comments">${commentsHtml}</ul> 
-       ${linkToLoginText}
+      <ul class="comments">${commentsHtml}</ul> 
+       ${token ? addCommentsHtml : linkToLoginText}
     `
     // добавляю в контейнер разметку
     container.innerHTML = baseHtml
 
-    // initLikeListeners(renderComments);
-    // initReplayListeners();
-    // initAddCommentListener(renderComments);
-
-    document.querySelector('.link-login').addEventListener('click', () => {
-        renderLogin()
-    })
+    if (token) {
+        initLikeListeners(renderComments)
+        initReplayListeners()
+        initAddCommentListener(renderComments)
+    } else {
+        document.querySelector('.link-login').addEventListener('click', () => {
+            renderLogin()
+        })
+    }
+    //
+    // window.addEventListener('DOMContentLoaded', (click) => {
+    //     const loginLink = document.querySelector('.link-login')
+    //     loginLink.addEventListener('click', () => {
+    //         renderLogin()
+    //     })
 }

@@ -1,7 +1,8 @@
-
+import { fetchAndRenderComments } from '../index.js'
+import { login, setToken, setName } from './api.js'
 
 export const renderLogin = () => {
-    const container = document.querySelector(".container")
+    const container = document.querySelector('.container')
 
     const loginHtml = `
        <section class="add-form">
@@ -30,4 +31,20 @@ export const renderLogin = () => {
        </section>         
     `
     container.innerHtml = loginHtml
+
+    const loginEl = document.querySelector('#login')
+    const passwordEl = document.querySelector('#password')
+    const submitButtonEl = document.querySelector('.button-main')
+
+    submitButtonEl.addEventListener('click', () => {
+        login(loginEl.value, passwordEl.value)
+            .then((response) => {
+                return response.json()
+            })
+            .then((data) => {
+                setToken(data.user.token)
+                setName(data.user.name)
+                fetchAndRenderComments()
+            })
+    })
 }

@@ -1,19 +1,14 @@
-import { fetchComments } from "./modules/api.js";
-import { updateComments } from "./modules/comments.js";
-import {renderComments} from "./modules/renderComments.js";
+import { fetchComments } from './modules/api.js'
+import { updateComments } from './modules/comments.js'
+import { renderComments } from './modules/renderComments.js'
 
-// document.querySelector('.comments').innerHTML = 
+// document.querySelector('.comments').innerHTML =
 // 'Пожалуйста, подождите, загружаю комментарии...'
 
-
-const fetchAndRenderComments = () => {
-
-fetchComments().then((data)=> {
-    updateComments(data);
-    renderComments()    
-    
-})
-
+export const fetchAndRenderComments = () => {
+    fetchComments().then((data) => {
+        updateComments(data)
+        renderComments()
+    })
 }
 fetchAndRenderComments()
-
