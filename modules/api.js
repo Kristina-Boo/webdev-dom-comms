@@ -42,7 +42,7 @@ export const postComment = (text, name) => {
     return fetch(host + '/comments', {
         method: 'POST',
         headers: {
-            Authorization: 'Bearer $(token)',
+            Authorization: `Bearer ${token}`,
         },
 
         body: JSON.stringify({

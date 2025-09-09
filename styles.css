@@ -143,6 +143,7 @@ body {
 
 .link-login {
     text-decoration: underline;
+    display: inline-block;
 }
 
 .add-form {

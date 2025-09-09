@@ -13,3 +13,10 @@ export const fetchAndRenderComments = (ifFirstLoading) => {
     })
 }
 fetchAndRenderComments(true)
+
+// const element = document.getElementsById('myElement')
+// if (element.classList.contains('link-login')) {
+//     console.log('У элемента есть класс "link-login"')
+// } else {
+//     console.log('нет класса "link-login"')
+// }
