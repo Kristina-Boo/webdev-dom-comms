@@ -9,6 +9,7 @@ export const renderComments = () => {
     const commentsHtml = comments
         .map((comment, index) => {
             return `
+                   
         <li class="comment" data-index="${index}">
            <div class="comment-header">
               <div>${comment.name}</div>
@@ -56,7 +57,7 @@ export const renderComments = () => {
       <div class="form-loading" style="display: none; margin-top: 20px;">
         комментарий добавляется...
       </div>`
-    const linkToLoginText = `<p>чтобы отправить комментарий, <span class="link-login">войдите</span></p>`
+    const linkToLoginText = `<p>чтобы отправить комментарий, <button class="link-login">войдите</button></p>`
     const baseHtml = `
       <ul class="comments">${commentsHtml}</ul> 
        ${token ? addCommentsHtml : linkToLoginText}

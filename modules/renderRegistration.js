@@ -32,9 +32,9 @@ export const renderRegistration = () => {
            <fieldset class="add-form-registry">
              <button class="add-form-button-main button-main" type="submit">
                Зарегистрироваться</button>
-              <u class="add-form-button-link entry">
+              <span class="add-form-button-link entry">
                Войти
-               </u>
+               </span>
             </fieldset>
        </section>         
     `
