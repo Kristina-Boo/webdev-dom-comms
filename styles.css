@@ -1,7 +1,9 @@
 body {
     margin: 0;
 }
-
+* {
+    box-sizing: border-box;
+}
 .container {
     font-family: Helvetica;
     color: #ffffff;
@@ -107,9 +109,8 @@ body {
 }
 
 .add-form-name {
-    width: 540px;
+    width: 300px;
     padding: 11px 22px;
-    margin-bottom: 12px;
 }
 
 .add-form-text {
@@ -151,6 +152,7 @@ body {
     margin-top: 48px;
     display: flex;
     flex-direction: column;
+    /* width: 624px; */
 }
 
 .add-form-name,
@@ -162,11 +164,15 @@ body {
 }
 
 .add-form-name {
-    width: 540px;
+    width: 100%;
     padding: 11px 22px;
     margin-bottom: 12px;
 }
-
+.add-form-registry {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
 .add-form-name:read-only {
     background-color: #d2ddd2;
     color: #363636;

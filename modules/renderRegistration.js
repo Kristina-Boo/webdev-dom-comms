@@ -38,7 +38,7 @@ export const renderRegistration = () => {
             </fieldset>
        </section>         
     `
-    container.innerHtml = registrationHtml
+    container.innerHTML = registrationHtml
 
     document.querySelector('.entry').addEventListener('click', () => {
         renderLogin()

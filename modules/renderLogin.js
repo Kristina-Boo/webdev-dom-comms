@@ -14,24 +14,24 @@ export const renderLogin = () => {
                  placeholder="Введите логин"
                  id="login"
                  required
-               />
-               <input
+              />
+              <input
                  type="password"
                  class="add-form-name"
                  placeholder="Введите пароль"
                  id="password"
                  required
-               ><input/>
-               <fieldset class="add-form-registry">
+               />
+               <div class="add-form-registry">
                  <button class="add-form-button-main button-main" type="submit">
                    Войти</button>
                   <span class="add-form-button-link registry">
                    Зарегистрироваться
-                   </span>
-                </fieldset>
+                  </span>
+               </div>
         </section>    
      `
-    container.innerHtml = loginHtml
+    container.innerHTML = loginHtml
 
     document.querySelector('.registry').addEventListener('click', () => {
         renderRegistration
