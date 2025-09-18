@@ -1,5 +1,5 @@
 import { fetchAndRenderComments } from '../index.js'
-import { setToken, setName, registration } from './api.js'
+import { registration, setToken, setName } from './api.js'
 import { renderLogin } from './renderLogin.js'
 
 export const renderRegistration = () => {
@@ -28,14 +28,14 @@ export const renderRegistration = () => {
              placeholder="Введите пароль"
              id="password"
              required
-           ><input/>
-           <fieldset class="add-form-registry">
+           />
+           <div class="add-form-registry">
              <button class="add-form-button-main button-main" type="submit">
                Зарегистрироваться</button>
               <span class="add-form-button-link entry">
                Войти
                </span>
-            </fieldset>
+            </div>
        </section>         
     `
     container.innerHTML = registrationHtml

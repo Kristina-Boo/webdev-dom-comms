@@ -203,6 +203,7 @@ body {
     color: white;
     cursor: pointer;
     border-bottom: inherit;
+    text-decoration: underline;
 }
 
 .add-form-button-exit {

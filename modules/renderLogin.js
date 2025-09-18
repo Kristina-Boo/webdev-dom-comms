@@ -34,7 +34,7 @@ export const renderLogin = () => {
     container.innerHTML = loginHtml
 
     document.querySelector('.registry').addEventListener('click', () => {
-        renderRegistration
+        renderRegistration()
     })
     const loginEl = document.querySelector('#login')
     const passwordEl = document.querySelector('#password')
