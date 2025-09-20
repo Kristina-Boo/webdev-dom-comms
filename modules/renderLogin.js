@@ -43,12 +43,20 @@ export const renderLogin = () => {
     submitButtonEl.addEventListener('click', () => {
         login(loginEl.value, passwordEl.value)
             .then((response) => {
+                if (response.status === 400) {
+                    throw new Error('Неверный логин или пароль')
+                }
                 return response.json()
             })
             .then((data) => {
                 setToken(data.user.token)
                 setName(data.user.name)
                 fetchAndRenderComments()
+            })
+            .catch((error) => {
+                if (error.message === 'Неверный логин или пароль') {
+                    return alert('неверный логин или пароль')
+                }
             })
     })
 }

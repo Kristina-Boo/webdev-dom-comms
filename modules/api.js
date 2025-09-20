@@ -81,4 +81,11 @@ export const registration = (name, login, password) => {
         method: 'POST',
         body: JSON.stringify({ name: name, login: login, password: password }),
     })
+    // .then((response) => {
+    //     if (response.status === 400)
+    //         throw new Error('Пользователь с таким логином уже существует')
+    // })
+    // .catch((error) => {
+    //     alert('Пользователь с таким логином уже существует', error.message)
+    // })
 }

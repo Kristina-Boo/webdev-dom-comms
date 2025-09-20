@@ -52,12 +52,25 @@ export const renderRegistration = () => {
     submitButtonEl.addEventListener('click', () => {
         registration(nameEl.value, loginEl.value, passwordEl.value)
             .then((response) => {
+                if (response.status === 400) {
+                    throw new Error(
+                        'Пользователь с таким логином уже существует',
+                    )
+                }
                 return response.json()
             })
             .then((data) => {
                 setToken(data.user.token)
                 setName(data.user.name)
                 fetchAndRenderComments()
+            })
+            .catch((error) => {
+                if (
+                    error.message ===
+                    'Пользователь с таким логином уже существует'
+                ) {
+                    return alert('Пользователь с таким логином уже существует')
+                }
             })
     })
 }
